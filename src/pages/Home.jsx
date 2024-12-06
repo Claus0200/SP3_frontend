@@ -1,9 +1,15 @@
+import styled from "styled-components";
 
+const Menu = styled.div`
+  display: flex;
+  gap: 50px;
+`
 
 function Home() {
   return (
     <>
       <h1>Home</h1>
+      <Menu>
       <a className="nav-link"
         href="https://library.clausjoergensen.dk/api/routes"
         target="_blank"
@@ -25,6 +31,7 @@ function Home() {
       >
         SP-3 GitHub Page
       </a>
+        </Menu>
     </>
   );
 }

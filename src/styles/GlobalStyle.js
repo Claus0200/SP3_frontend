@@ -106,13 +106,23 @@ const GlobalStyle = createGlobalStyle`
     }
 
     .nav-link:hover {
-        color: ${({ theme }) => theme.text};
-        text-decoration: underline;    
-        cursor: pointer;
-        background-color: rgba(25, 0, 0, 0.3); /* Light yellow with transparency */
-        background-image: linear-gradient(90deg, rgba(255, 200, 0, 0.3), rgba(255, 0, 0, 0.3));
-        border-radius: 50px; /* Optional: round corners */
-    }
+    color: ${({ theme }) => theme.text}; /* Ensure text remains visible */
+    text-decoration: underline;
+    cursor: pointer;
+
+    /* Neutral background with transparency for visibility on light/dark */
+    background-color: ${({theme}) => theme.body}; /* Neutral gray, semi-transparent */
+
+    /* Gradient with balanced visibility for both light and dark */
+    background-image: linear-gradient(
+        90deg, 
+        rgba(128, 128, 128, 0.3), /* Light gray with transparency */
+        rgba(80, 80, 80, 0.3)     /* Darker gray for contrast */
+    );
+
+    border-radius: 50px; /* Optional: round corners */
+}
+
 
 `;
 

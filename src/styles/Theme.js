@@ -2,7 +2,7 @@ export const lightTheme = {
     body: 'lightblue',
     text: 'Black',
     toggleBorder: '#FFF',
-    background: 'white',
+    background: 'lightgrey',
 };
   
 export const darkTheme = {

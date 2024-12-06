@@ -17,8 +17,8 @@ const StyledTable = styled.table`
 `;
 
 function Endpoints() {
-    return (
-        <TableContainer>
+  return (
+    <TableContainer>
       <h1>API Documentation</h1>
 
       {/* Books Table */}
@@ -197,6 +197,58 @@ function Endpoints() {
         </tbody>
       </StyledTable>
 
+      <h2>Request Body and Response Formats</h2>
+      <StyledTable>
+          <thead>
+            <tr>
+              <th>Format</th>
+              <th>Structure</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>User Format</td>
+              <td>
+                {`{
+  "username": "String",
+  "password": "String"
+}`}
+              </td>
+            </tr>
+            <tr>
+              <td>Token Format</td>
+              <td>
+                {`{
+  "token": "String",
+  "username": "String"
+}`}
+              </td>
+            </tr>
+            <tr>
+              <td>Book Format</td>
+              <td>
+                {`{
+  "title": "String",
+  "year": "Number",
+  "author": "String",
+  "genre": "String"
+}`}
+              </td>
+            </tr>
+            <tr>
+              <td>Lentbook Format</td>
+              <td>
+                {`{
+  "user": "User (1)",
+  "book": "Book (3)",
+  "lentdate": "String",
+  "returndate": "String"
+}`}
+              </td>
+            </tr>
+          </tbody>
+      </StyledTable>
+
       {/* Error Documentation */}
       <h2>Errors</h2>
       <StyledTable>
@@ -238,8 +290,7 @@ function Endpoints() {
         </tbody>
       </StyledTable>
     </TableContainer>
-      
-    );
+  );
 }
 
 export default Endpoints;
