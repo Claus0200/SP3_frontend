@@ -19,17 +19,19 @@ const StyledButton = styled.button`
     background-color: ${({ theme }) => theme.text};
     color: ${({ theme }) => theme.body};
   }
+  
+  
 `
 
 function TopMenu({ toggleTheme }) {
   return (
     <nav>
       <StyledMenu>
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/todos">Todos</NavLink>
-          <NavLink to="/login">Login</NavLink>
+          <NavLink className="nav-link" to="/">Home</NavLink>
+          <NavLink className="nav-link" to="/vision">Vision</NavLink>
+          <NavLink className="nav-link" to="/endpoints">Endpoints</NavLink>
           <StyledButton onClick={toggleTheme}>
-            Switch to Mode
+            Switch Theme
           </StyledButton>
       </StyledMenu>
     </nav>

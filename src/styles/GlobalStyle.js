@@ -61,6 +61,59 @@ const GlobalStyle = createGlobalStyle`
     button {
         border-radius: 8px;
     }
-`
+
+    table {
+        width: 100%;
+        text-align: left;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    ul {
+        list-style-type: none;
+        display: flex;
+    }
+
+    thead {
+        background-color: ${({ theme }) => theme.body};
+        color: ${({ theme }) => theme.text};
+    }
+
+    th {
+        background-color: ${({ theme }) => theme.body};
+        color: ${({ theme }) => theme.text};
+        font-weight: bold;
+    }
+
+    tr {
+        color: ${({ theme }) => theme.text};
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+  
+    .nav-link {
+        color: ${({ theme }) => theme.text};
+        text-decoration: none;
+    }
+
+    .nav-link:hover {
+        color: ${({ theme }) => theme.text};
+        text-decoration: underline;    
+        cursor: pointer;
+        background-color: rgba(25, 0, 0, 0.3); /* Light yellow with transparency */
+        background-image: linear-gradient(90deg, rgba(255, 200, 0, 0.3), rgba(255, 0, 0, 0.3));
+        border-radius: 50px; /* Optional: round corners */
+    }
+
+`;
 
 export default GlobalStyle;

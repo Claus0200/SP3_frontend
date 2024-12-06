@@ -35,7 +35,8 @@ function MainLayout() {
                 <main>
                     <Outlet />
                 </main>
-                <Footer>&copy; Claus Peter Jørgensen</Footer>
+                <Footer>sp-3-team-2</Footer>
+                <Footer>&copy; Claus Peter Jørgensen, Benjamin Hernandez, Ferdinand Amstrup Vestergaard og Mahdi Michael Karimi</Footer>
             </Container>
         </ThemeProvider>
         </>

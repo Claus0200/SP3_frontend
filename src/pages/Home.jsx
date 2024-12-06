@@ -1,14 +1,32 @@
+
+
 function Home() {
-    return (
-        <>
-            <h1>Home</h1>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. 
-                Eaque quaerat provident explicabo sequi modi, iusto eum expedita
-                qui deserunt accusantium architecto unde et fugiat saepe beatae corrupti
-                quos officia quisquam?
-            </p>
-        </>
-    );
+  return (
+    <>
+      <h1>Home</h1>
+      <a className="nav-link"
+        href="https://library.clausjoergensen.dk/api/routes"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Deployed API
+      </a>
+      <a className="nav-link"
+        href="https://github.com/cphmk/SP-2_APIHub"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        SP-2 GitHub Page
+      </a>
+      <a className="nav-link"
+        href="https://github.com/Claus0200/SP3_frontend"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        SP-3 GitHub Page
+      </a>
+    </>
+  );
 }
 
 export default Home;
