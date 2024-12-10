@@ -61,6 +61,69 @@ const GlobalStyle = createGlobalStyle`
     button {
         border-radius: 8px;
     }
-`
+
+    table {
+        width: 100%;
+        text-align: left;
+    }
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    ul {
+        list-style-type: none;
+        display: flex;
+    }
+
+    thead {
+        background-color: ${({ theme }) => theme.body};
+        color: ${({ theme }) => theme.text};
+    }
+
+    th {
+        background-color: ${({ theme }) => theme.body};
+        color: ${({ theme }) => theme.text};
+        font-weight: bold;
+    }
+
+    tr {
+        color: ${({ theme }) => theme.text};
+    }
+
+    tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+  
+    .nav-link {
+        color: ${({ theme }) => theme.text};
+        text-decoration: none;
+    }
+
+    .nav-link:hover {
+    color: ${({ theme }) => theme.text}; /* Ensure text remains visible */
+    text-decoration: underline;
+    cursor: pointer;
+
+    /* Neutral background with transparency for visibility on light/dark */
+    background-color: ${({theme}) => theme.body}; /* Neutral gray, semi-transparent */
+
+    /* Gradient with balanced visibility for both light and dark */
+    background-image: linear-gradient(
+        90deg, 
+        rgba(128, 128, 128, 0.3), /* Light gray with transparency */
+        rgba(80, 80, 80, 0.3)     /* Darker gray for contrast */
+    );
+
+    border-radius: 50px; /* Optional: round corners */
+}
+
+
+`;
 
 export default GlobalStyle;
