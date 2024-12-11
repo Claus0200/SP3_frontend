@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import { useEffect } from "react";
 
 const StyledMenu = styled.ul`
     display: flex;
@@ -22,6 +23,10 @@ const StyledButton = styled.button`
 `
 
 function TopMenu({ toggleTheme, loggedIn, username, handleLogout }) {
+  useEffect(() => {
+    console.log("TopMenu re-rendered - loggedIn:", loggedIn, "username:", username);
+  }, [loggedIn, username]);
+
   return (
     <nav>
       <StyledMenu>
@@ -36,9 +41,7 @@ function TopMenu({ toggleTheme, loggedIn, username, handleLogout }) {
         ) : (
           <NavLink className="nav-link" to="/login">Login</NavLink>
         )}
-        <StyledButton onClick={toggleTheme}>
-          Switch Theme
-        </StyledButton>
+        <StyledButton onClick={toggleTheme}>Switch Theme</StyledButton>
       </StyledMenu>
     </nav>
   );

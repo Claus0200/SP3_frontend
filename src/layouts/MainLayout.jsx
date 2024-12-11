@@ -1,12 +1,13 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import GlobalStyle from "../styles/GlobalStyle";
 import styled from "styled-components";
 import TopMenu from "../components/TopMenu";
 import { ThemeProvider } from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { darkTheme, lightTheme } from "../styles/Theme";
 import image from "../assets/logo.png";
 import apiFacade from "../assets/apiFacade";
+import Login from "../pages/Login";
 
 const Container = styled.div`
   display: flex;
@@ -25,33 +26,47 @@ const Image = styled.img`
 `;
 
 function MainLayout() {
-  const [loggedIn, setLoggedIn] = useState(apiFacade.loggedIn()); // Track login state
-  const [username, setUsername] = useState(apiFacade.getUsername()); // Track logged-in user
-  // Handle login
-  const handleLogin = async (username, password) => {
-    try {
-      await apiFacade.login(username, password);
-      setLoggedIn(true);
-      setUsername(apiFacade.getUsername());
-    } catch (err) {
-      console.error("Login failed:", err.message);
-    }
-  };
+  const location = useLocation();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [username, setUsername] = useState(null);
 
-  // Handle logout
   const handleLogout = () => {
     apiFacade.logout();
-    setLoggedIn(false);
+    setIsLoggedIn(false);
     setUsername(null);
   };
 
-  const [theme, setTheme] = useState("light");
+  // Check login status on load and on changes to localStorage
+  useEffect(() => {
+    const checkLoginStatus = () => {
+      const token = apiFacade.getToken();
+      if (token) {
+        setIsLoggedIn(true);
+        setUsername(apiFacade.getUsername());
+      } else {
+        setIsLoggedIn(false);
+        setUsername(null);
+      }
+    };
 
+    checkLoginStatus();
+
+    // Optional: Listen to localStorage changes if login/logout can happen in another tab
+    const handleStorageChange = () => checkLoginStatus();
+    window.addEventListener("storage", handleStorageChange);
+
+    return () => {
+      window.removeEventListener("storage", handleStorageChange);
+    };
+  }, []);
   const toggleTheme = () => {
     setTheme((current) => (current === "light" ? "dark" : "light"));
   };
 
+  const [theme, setTheme] = useState("light");
+
   const currentTheme = theme === "light" ? lightTheme : darkTheme;
+
 
   return (
     <>
@@ -60,20 +75,15 @@ function MainLayout() {
         <Container>
           <TopMenu
             toggleTheme={toggleTheme}
-            handleLogin={handleLogin}
             handleLogout={handleLogout}
-            loggedIn={loggedIn}
+            loggedIn={isLoggedIn}
             username={username}
           />
           <main>
-            <Outlet
-              handleLogin={handleLogin}
-              handleLogout={handleLogout}
-              loggedIn={loggedIn}
-              username={username}
+            <Outlet context={{ setIsLoggedIn, setUsername }}
             />
           </main>
-          <Image src={image}></Image>
+          <Image src={image} alt="Logo" />
           <Footer>sp-3-team-2</Footer>
           <Footer>
             &copy; Claus Peter Jørgensen, Benjamin Hernandez, Ferdinand Amstrup

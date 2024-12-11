@@ -48,23 +48,34 @@ object when you do)*/
 
     // Get username from the token
     const getUsername = () => {
-      const token = getToken();
-      const decodedToken = decodeToken(token);
-      return decodedToken ? decodedToken.username : null;
+      const token = localStorage.getItem('jwtToken');
+      if (token) {
+        const decoded = decodeToken(token); // Ensure you are decoding the token correctly
+        return decoded.username; // Make sure the decoded object has 'username' field
+      }
+      return null;
     };
 
-  const login = async (user, password) => {
-    const options = makeOptions("POST", false, {
-      username: user,
-      password: password,
-    });
-    console.log("login: ", user, password);
-    return fetch(URL + "/auth/login", options)
-      .then(handleHttpErrors)
-      .then((res) => {
-        setToken(res.token);
+    const login = async (user, password) => {
+      const options = makeOptions("POST", false, {
+        username: user,
+        password: password,
       });
-  };
+      console.log("login: ", user, password);  // This is already logged
+      try {
+        const res = await fetch(URL + "/auth/login", options);
+        const data = await handleHttpErrors(res);
+        console.log("Login response data:", data);  // Log the full response from the API
+    
+        // Set token in localStorage
+        setToken(data.token);
+        console.log("Token set in localStorage:", data.token);  // Log the token to ensure it's stored
+    
+      } catch (error) {
+        console.error("Login failed", error);
+      }
+    };
+    
   const fetchData = () => {
     const options = makeOptions("GET", true); //True add's the token
     return fetch(URL + "/info/user", options).then(handleHttpErrors);
