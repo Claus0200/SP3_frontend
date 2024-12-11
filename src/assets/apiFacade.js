@@ -26,6 +26,33 @@ object when you do)*/
     localStorage.removeItem("jwtToken");
   };
 
+    // Decode JWT to get user info
+    const decodeToken = (token) => {
+      if (!token) return null;
+  
+      try {
+        const base64Url = token.split(".")[1];
+        const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+        const jsonPayload = decodeURIComponent(
+          atob(base64)
+            .split("")
+            .map((c) => `%${(`00${c.charCodeAt(0).toString(16)}`).slice(-2)}`)
+            .join("")
+        );
+        return JSON.parse(jsonPayload);
+      } catch (e) {
+        console.error("Error decoding token", e);
+        return null;
+      }
+    };
+
+    // Get username from the token
+    const getUsername = () => {
+      const token = getToken();
+      const decodedToken = decodeToken(token);
+      return decodedToken ? decodedToken.username : null;
+    };
+
   const login = async (user, password) => {
     const options = makeOptions("POST", false, {
       username: user,
@@ -63,6 +90,7 @@ object when you do)*/
     setToken,
     getToken,
     loggedIn,
+    getUsername,
     login,
     logout,
     fetchData,
