@@ -123,7 +123,6 @@ const GlobalStyle = createGlobalStyle`
     border-radius: 50px; /* Optional: round corners */
 }
 
-
 `;
 
 export default GlobalStyle;
