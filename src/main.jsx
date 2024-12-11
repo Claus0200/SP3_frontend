@@ -6,6 +6,7 @@ import MainLayout from './layouts/MainLayout.jsx'
 import Vision from './pages/Vision.jsx'
 import Endpoints from './pages/Endpoints.jsx'
 import AdminPage from './pages/Admin.jsx'
+import Login from './pages/Login.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -14,6 +15,7 @@ const router = createBrowserRouter(
       <Route path="vision" element={<Vision />} />
       <Route path="endpoints" element={<Endpoints />} />
       <Route path="admin" element={<Admin />} />
+      <Route path="login" element={<Login />} />
     </Route>
   )
 )
