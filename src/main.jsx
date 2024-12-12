@@ -8,6 +8,7 @@ import Endpoints from './pages/Endpoints.jsx'
 import Login from './pages/Login.jsx'
 
 const router = createBrowserRouter(
+  
   createRoutesFromElements(
     <Route path="/" element={<MainLayout />}>
       <Route index element={<Home />}/>

@@ -1,48 +1,55 @@
 import { useState } from "react";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import apiFacade from "../assets/apiFacade";
 
 function Login() {
-  const init = { username: "", password: "" };
-  const [loginCredentials, setLoginCredentials] = useState(init);
+  const [loginCredentials, setLoginCredentials] = useState({
+    username: "",
+    password: "",
+  });
+
+  const navigate = useNavigate();
+  const { setIsLoggedIn, setUsername } = useOutletContext(); // Get props from MainLayout
+
   const performLogin = (evt) => {
-    console.log(loginCredentials)
     evt.preventDefault();
-    apiFacade.login(loginCredentials.username, loginCredentials.password)
+    apiFacade
+      .login(loginCredentials.username, loginCredentials.password)
       .then(() => {
-        // After successful login, redirect or show success message
-        console.log("Login successful");
+        setIsLoggedIn(true);
+        setUsername(loginCredentials.username);
+        navigate("/"); // Redirect to home after login
       })
       .catch((error) => {
-        // Handle error if login fails
         console.error("Login failed", error);
       });
   };
 
   const onChange = (evt) => {
-    console.log(`Updating ${evt.target.id}: ${evt.target.value}`);
-    setLoginCredentials({ ...loginCredentials, [evt.target.id]: evt.target.value });
+    setLoginCredentials({
+      ...loginCredentials,
+      [evt.target.id]: evt.target.value,
+    });
   };
 
   return (
-    <div>
+    <form onSubmit={performLogin}>
       <h2>Login</h2>
-      <form onSubmit={performLogin}>
-        <input 
-          placeholder="User Name" 
-          id="username" 
-          onChange={onChange} 
-          value={loginCredentials.username} 
-        />
-        <input 
-          type="password"
-          placeholder="Password" 
-          id="password" 
-          onChange={onChange} 
-          value={loginCredentials.password} 
-        />
-        <button type="submit">Login</button>
-      </form>
-    </div>
+      <input
+        id="username"
+        placeholder="Username"
+        value={loginCredentials.username}
+        onChange={onChange}
+      />
+      <input
+        id="password"
+        type="password"
+        placeholder="Password"
+        value={loginCredentials.password}
+        onChange={onChange}
+      />
+      <button type="submit">Login</button>
+    </form>
   );
 }
 
