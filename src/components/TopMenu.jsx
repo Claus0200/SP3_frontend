@@ -30,6 +30,7 @@ function TopMenu({ toggleTheme }) {
           <NavLink className="nav-link" to="/">Home</NavLink>
           <NavLink className="nav-link" to="/vision">Vision</NavLink>
           <NavLink className="nav-link" to="/endpoints">Endpoints</NavLink>
+          <NavLink className="nav-link" to="/admin">Admin</NavLink>
           <NavLink className="nav-link" to="/login">Login</NavLink>
           <StyledButton onClick={toggleTheme}>
             Switch Theme

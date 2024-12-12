@@ -5,8 +5,8 @@ import Home from './pages/Home.jsx'
 import MainLayout from './layouts/MainLayout.jsx'
 import Vision from './pages/Vision.jsx'
 import Endpoints from './pages/Endpoints.jsx'
-import AdminPage from './pages/Admin.jsx'
 import Login from './pages/Login.jsx'
+import Admin from './pages/Admin.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(

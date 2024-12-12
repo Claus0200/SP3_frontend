@@ -1,8 +1,15 @@
 import styled from "styled-components";
+import image from '../assets/logo.png'
 
 const Menu = styled.div`
   display: flex;
   gap: 50px;
+`
+
+const Image = styled.img`
+    width: 400px;
+    height: auto;
+    
 `
 
 function Home() {
@@ -31,7 +38,8 @@ function Home() {
       >
         SP-3 GitHub Page
       </a>
-        </Menu>
+      </Menu>
+      <Image src={image}></Image>
     </>
   );
 }

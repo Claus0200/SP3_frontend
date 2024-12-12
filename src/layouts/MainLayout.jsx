@@ -5,7 +5,6 @@ import TopMenu from "../components/TopMenu";
 import { ThemeProvider } from 'styled-components';
 import { useState } from "react";
 import { darkTheme, lightTheme } from "../styles/Theme";
-import image from '../assets/logo.png'
 
 const Container = styled.div`
     display: flex;
@@ -16,12 +15,6 @@ const Container = styled.div`
 
 const Footer = styled.footer`
     color: ${({ theme }) => theme.text};
-`
-
-const Image = styled.img`
-    width: 400px;
-    height: auto;
-    
 `
 
 function MainLayout() {
@@ -43,7 +36,6 @@ function MainLayout() {
                 <main>
                     <Outlet />
                 </main>
-                <Image src={image}></Image>
                 <Footer>sp-3-team-2</Footer>
                 <Footer>&copy; Claus Peter Jørgensen, Benjamin Hernandez, Ferdinand Amstrup Vestergaard og Mahdi Michael Karimi</Footer>
             </Container>
