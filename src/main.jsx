@@ -9,6 +9,7 @@ import Login from './pages/Login.jsx'
 import Admin from './pages/Admin.jsx'
 
 const router = createBrowserRouter(
+  
   createRoutesFromElements(
     <Route path="/" element={<MainLayout />}>
       <Route index element={<Home />}/>
