@@ -1,7 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
-
     * {
         margin: 0;
         padding: 20px;
@@ -25,41 +24,41 @@ const GlobalStyle = createGlobalStyle`
         text-align: center;
     }
 
-    /* Wireframe */
-
-    a {
-        font-weight: 500;
-        color: #646cff;
-        text-decoration: inherit;
-    }
-
-    a:hover {
-        color: #535bf2;
-    }
-
     body {
         display: flex;
         flex-direction: column;
         align-items: center;
+        color: var(--text-color);
     }
 
     h1 {
         font-size: 2rem;
-        color: var(--text-color)
+        color: var(--text-color);
     }
 
     h2 {
         font-size: 1.5rem;
-        color: var(--text-color)
+        color: var(--text-color);
     }
 
     p {
         font-size: 1rem;
-        color: var(--text-color)
+        color: var(--text-color);
     }
 
     button {
-        border-radius: 8px;
+        background-color: ${({ theme }) => theme.body};
+        color: ${({ theme }) => theme.text};
+        border: 2px solid ${({ theme }) => theme.toggleBorder};
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+
+        &:hover {
+            background-color: ${({ theme }) => theme.text};
+            color: ${({ theme }) => theme.body};
+        }
     }
 
     table {
@@ -70,11 +69,6 @@ const GlobalStyle = createGlobalStyle`
     th, td {
         border: 1px solid #ddd;
         padding: 8px;
-    }
-
-    ul {
-        list-style-type: none;
-        display: flex;
     }
 
     thead {
@@ -99,31 +93,20 @@ const GlobalStyle = createGlobalStyle`
     tr:hover {
         background-color: #f1f1f1;
     }
-  
-    .nav-link {
-        color: ${({ theme }) => theme.text};
-        text-decoration: none;
+
+    input {
+        padding: 10px;
+        font-size: 1rem;
+        color: var(--text-color);
+        background-color: ${({ theme }) => theme.body};
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
     }
 
-    .nav-link:hover {
-    color: ${({ theme }) => theme.text}; /* Ensure text remains visible */
-    text-decoration: underline;
-    cursor: pointer;
-
-    /* Neutral background with transparency for visibility on light/dark */
-    background-color: ${({theme}) => theme.body}; /* Neutral gray, semi-transparent */
-
-    /* Gradient with balanced visibility for both light and dark */
-    background-image: linear-gradient(
-        90deg, 
-        rgba(128, 128, 128, 0.3), /* Light gray with transparency */
-        rgba(80, 80, 80, 0.3)     /* Darker gray for contrast */
-    );
-
-    border-radius: 50px; /* Optional: round corners */
-}
-
-
+    input::placeholder {
+        color: var(--text-color);
+        opacity: 0.7;
+    }
 `;
 
 export default GlobalStyle;
