@@ -5,7 +5,6 @@ import TopMenu from "../components/TopMenu";
 import { ThemeProvider } from "styled-components";
 import { useState, useEffect } from "react";
 import { darkTheme, lightTheme } from "../styles/Theme";
-import image from "../assets/logo.png";
 import apiFacade from "../assets/apiFacade";
 import Login from "../pages/Login";
 import Signup from "../pages/Signup";
@@ -21,10 +20,6 @@ const Footer = styled.footer`
   color: ${({ theme }) => theme.text};
 `;
 
-const Image = styled.img`
-  width: 400px;
-  height: auto;
-`;
 
 function MainLayout() {
   const location = useLocation();
@@ -84,7 +79,6 @@ function MainLayout() {
             <Outlet context={{ setIsLoggedIn, setUsername }}
             />
           </main>
-          <Image src={image} alt="Logo" />
           <Footer>sp-3-team-2</Footer>
           <Footer>
             &copy; Claus Peter Jørgensen, Benjamin Hernandez, Ferdinand Amstrup

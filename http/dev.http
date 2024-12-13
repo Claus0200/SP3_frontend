@@ -1,9 +1,9 @@
-@baseUrl = https://todos.showcode.dk/api
+@baseUrl = https://library.clausjoergensen.dk/api
 
-@jwtToken = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJKb24gQmVydGVsc2VuIiwic3ViIjoidGVzdDMxMjciLCJleHAiOjE3MzMzODk2ODcsInJvbGVzIjoidXNlciIsInVzZXJuYW1lIjoidGVzdDMxMjcifQ.UsBVXyGjqoaB3Wj6JA4lyv8NUiVLXpnMCJbn7JNlIdM
+@jwtToken = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHcnVwcGUgMiIsInN1YiI6InRlc3QzMTI3IiwiZXhwIjoxNzM0MDk2Njc4LCJyb2xlcyI6InVzZXIiLCJ1c2VybmFtZSI6InRlc3QzMTI3In0.1F1ZqjBnP6JQxemB09OdhY5G21Mz2hCe7nd1DosXp28
 
 ###
-GET {{baseUrl}}/todos
+GET {{baseUrl}}/books
 
 
 ###
@@ -25,6 +25,12 @@ POST {{baseUrl}}/auth/login/
 
 
 ###
-GET {{baseUrl}}/todos/mine
+GET {{baseUrl}}/lendbooks
+Accept: application/json
+Authorization: Bearer {{jwtToken}}
+
+
+###
+GET {{baseUrl}}/info/user
 Accept: application/json
 Authorization: Bearer {{jwtToken}}

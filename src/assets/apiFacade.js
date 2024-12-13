@@ -9,8 +9,8 @@ function handleHttpErrors(res) {
 
 function apiFacade() {
   /* Insert utility-methods from later steps 
-here (REMEMBER to uncomment in the returned 
-object when you do)*/
+  here (REMEMBER to uncomment in the returned 
+  object when you do)*/
 
   const setToken = (token) => {
     localStorage.setItem("jwtToken", token);

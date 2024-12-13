@@ -8,6 +8,8 @@ import Endpoints from './pages/Endpoints.jsx'
 import BookList from './pages/BookList.jsx';
 import BookOrder from './pages/BookOrder.jsx';
 import Login from './pages/Login.jsx'
+import Admin from './pages/Admin.jsx'
+import Account from './pages/Account.jsx'
 import Signup from './pages/Signup.jsx'
 
 const router = createBrowserRouter(
@@ -21,8 +23,9 @@ const router = createBrowserRouter(
       <Route path="books" element={<BookList />}>
        <Route path=":searchType" element={<BookList />} />
       </Route>
+      <Route path="admin" element={<Admin />} />
+      <Route path="account" element={<Account />} />
       <Route path="book-order" element={<BookOrder />} />
-
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup/>} />
     </Route>
