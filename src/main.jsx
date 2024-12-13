@@ -19,8 +19,8 @@ const router = createBrowserRouter(
       <Route index element={<Home />} />
       <Route path="vision" element={<Vision />} />
       <Route path="endpoints" element={<Endpoints />} />
-      <Route path="books" element={<BookList />} >
-      <Route path=":searchType" element={<BookList />} />
+      <Route path="books" element={<BookList />}>
+       <Route path=":searchType" element={<BookList />} />
       </Route>
       <Route path="admin" element={<Admin />} />
       <Route path="login" element={<Login />} />
