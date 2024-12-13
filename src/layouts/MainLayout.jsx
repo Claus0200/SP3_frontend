@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { darkTheme, lightTheme } from "../styles/Theme";
 import apiFacade from "../assets/apiFacade";
 import Login from "../pages/Login";
+import Signup from "../pages/Signup";
 
 const Container = styled.div`
   display: flex;

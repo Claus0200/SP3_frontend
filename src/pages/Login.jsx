@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import apiFacade from "../assets/apiFacade";
+import { NavLink } from "react-router-dom";
 
 function Login() {
   const [loginCredentials, setLoginCredentials] = useState({
@@ -49,6 +50,7 @@ function Login() {
         onChange={onChange}
       />
       <button type="submit">Login</button>
+      <h3><NavLink className="nav-link" to="/signup">Signup</NavLink></h3>
     </form>
   );
 }
