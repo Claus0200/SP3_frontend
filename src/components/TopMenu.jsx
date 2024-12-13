@@ -63,39 +63,35 @@ function TopMenu({ toggleTheme, loggedIn, username, handleLogout }) {
 
   const isBasketActive = location.pathname === "/book-order";
   useEffect(() => {
-    console.log("TopMenu re-rendered - loggedIn:", loggedIn, "username:", username);
+    console.log(
+      "TopMenu re-rendered - loggedIn:",
+      loggedIn,
+      "username:",
+      username
+    );
   }, [loggedIn, username]);
-
 
   return (
     <nav>
       <StyledMenu>
-        <NavLink className="nav-link" to="/" end>
-          Home
-        </NavLink>
-        <NavLink className="nav-link" to="/vision">
-          Vision
-        </NavLink>
-        <NavLink className="nav-link" to="/endpoints">
-          Endpoints
-        </NavLink>
-        <NavLink className="nav-link" to="/books">
-          Book List
-        </NavLink>
-        <span
-          className={`nav-basket ${isBasketActive ? "active" : ""}`}
-          onClick={() => navigate("/book-order", { state: { orderedBooks } })}
-        >
-          Book Basket
-        </span>
+        <NavLink className="nav-link" to="/" end>Home</NavLink>
+        <NavLink className="nav-link" to="/vision">Vision</NavLink>
+        <NavLink className="nav-link" to="/endpoints">Endpoints</NavLink>
+        <NavLink className="nav-link" to="/books">Book List</NavLink> 
+        <span className={`nav-basket ${isBasketActive ? "active" : ""}`} onClick={() => navigate("/book-order", { state: { orderedBooks } })}>Book Basket</span>
 
         {loggedIn ? (
           <>
-            <NavLink className={"nav-link"} to="/account"> Welcome {username}</NavLink>
+            <NavLink className={"nav-link"} to="/account">
+              {" "}
+              Welcome {username}
+            </NavLink>
             <StyledButton onClick={handleLogout}>Logout</StyledButton>
           </>
         ) : (
-          <NavLink className="nav-link" to="/login">Login</NavLink>
+          <NavLink className="nav-link" to="/login">
+            Login
+          </NavLink>
         )}
 
         <StyledButton onClick={toggleTheme}>Switch Theme</StyledButton>
@@ -105,4 +101,3 @@ function TopMenu({ toggleTheme, loggedIn, username, handleLogout }) {
 }
 
 export default TopMenu;
-

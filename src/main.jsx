@@ -19,18 +19,18 @@ const router = createBrowserRouter(
       <Route path="endpoints" element={<Endpoints />} />
      
       <Route path="books" element={<BookList />}>
-      <Route path=":searchType" element={<BookList />} />
+       <Route path=":searchType" element={<BookList />} />
+      </Route>
       <Route path="book-order" element={<BookOrder />} />
+
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup/>} />
     </Route>
   )
-);
+)
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router} />
   </StrictMode>
 );
-
-
