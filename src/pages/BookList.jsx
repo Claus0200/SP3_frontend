@@ -11,7 +11,12 @@ function BookList() {
   const { searchType } = useParams();
   const navigate = useNavigate();
   const location = useLocation();
-  const [orderedBooks, setOrderedBooks] = useState(location.state?.orderedBooks || []); // Initialize with state from location
+  
+  // Initialize orderedBooks from localStorage or location state
+  const [orderedBooks, setOrderedBooks] = useState(() => {
+    const storedBooks = JSON.parse(localStorage.getItem("orderedBooks")) || [];
+    return location.state?.orderedBooks || storedBooks;
+  });
 
   useEffect(() => {
     if (!searchType) {
@@ -69,6 +74,9 @@ function BookList() {
       }
       const updatedBooks = [...prev, book];
       console.log("Added to order:", updatedBooks); // Debug
+
+      // Save to localStorage
+      localStorage.setItem("orderedBooks", JSON.stringify(updatedBooks));
 
       // Update the state in React Router
       navigate("/books", { state: { orderedBooks: updatedBooks } }); // Pass updated orderedBooks
@@ -153,6 +161,7 @@ function BookList() {
 }
 
 export default BookList;
+
 
 
 

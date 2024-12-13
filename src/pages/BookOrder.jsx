@@ -1,14 +1,21 @@
-import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function BookOrder() {
-  const location = useLocation();
+  const [orderedBooks, setOrderedBooks] = useState([]);
   const navigate = useNavigate();
-  const orderedBooks = location.state?.orderedBooks || [];
-  console.log("Received orderedBooks in BookOrder:", orderedBooks); // Debug
+
+  // Load ordered books from localStorage when the component mounts
+  useEffect(() => {
+    const storedBooks = JSON.parse(localStorage.getItem("orderedBooks")) || [];
+    setOrderedBooks(storedBooks);
+  }, []);
 
   const confirmOrder = () => {
     alert("You can now read your books!");
-    navigate("/books", { state: { orderedBooks } }); // Preserve state on navigation
+    // Clear only the current orders
+    localStorage.setItem("orderedBooks", JSON.stringify([])); // Empty the order list
+    setOrderedBooks([]); // Clear the state for the current session
   };
 
   return (
@@ -43,12 +50,15 @@ function BookOrder() {
       {orderedBooks.length > 0 && (
         <button onClick={confirmOrder}>Confirm Order</button>
       )}
+
+      <button onClick={() => navigate("/books")} style={{ marginTop: "20px" }}>
+        Back to Book List
+      </button>
     </div>
   );
 }
 
 export default BookOrder;
-
 
 
 
