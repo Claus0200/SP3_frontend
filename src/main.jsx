@@ -29,12 +29,10 @@ const router = createBrowserRouter(
       <Route path="signup" element={<Signup/>} />
     </Route>
   )
-);
+)
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router} />
   </StrictMode>
 );
-
-
