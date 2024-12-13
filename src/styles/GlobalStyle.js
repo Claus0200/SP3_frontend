@@ -94,6 +94,7 @@ const GlobalStyle = createGlobalStyle`
         background-color: #f1f1f1;
     }
 
+
     input {
         padding: 10px;
         font-size: 1rem;
