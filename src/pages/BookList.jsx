@@ -8,17 +8,27 @@ function BookList() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
-  const { searchType } = useParams();
+
+  const { searchType } = useParams();  // This hook retrieves parameters from the URL.
   const navigate = useNavigate();
   const location = useLocation();
-  const [orderedBooks, setOrderedBooks] = useState(location.state?.orderedBooks || []); // Initialize with state from location
+  
+  // Initialize orderedBooks from localStorage or location state
+  const [orderedBooks, setOrderedBooks] = useState(() => {
+    const storedBooks = JSON.parse(localStorage.getItem("orderedBooks")) || [];
+    return location.state?.orderedBooks || storedBooks;
+  });
 
-  useEffect(() => {
+// Navigate to the correct route if search type is missing.  
+// ordered books will be sent with the new route
+useEffect(() => {
     if (!searchType) {
-      navigate("/books/title", { state: { orderedBooks } }); // Ensure orderedBooks is preserved during navigation
+      navigate("/books", { state: { orderedBooks } }); // Ensure orderedBooks is preserved during navigation
     }
   }, [searchType, navigate, orderedBooks]);
 
+
+// Fetching books  
   useEffect(() => {
     const fetchAllBooks = async () => {
       setLoading(true);
@@ -44,23 +54,29 @@ function BookList() {
     fetchAllBooks();
   }, []);
 
-  const filterBooks = (books, query, type) => {
-    if (!query.trim()) return books;
 
-    const lowerCaseQuery = query.toLowerCase();
+  //function designed to filter a list of books 
+  // based on a query and a filter type
+  const filterBooks = (books, query, type) => {
+    if (!query.trim()) return books;  // If the query is empty or just whitespace, return the full list of books.
+
+    const lowerCaseQuery = query.toLowerCase();  // Convert the query to lowercase for case-insensitive searching.
     return books.filter((book) => {
-      if (type === "title") return book.title.toLowerCase().includes(lowerCaseQuery);
+      if (type === "title") return book.title.toLowerCase().includes(lowerCaseQuery); // Match query with the book's title.
       if (type === "author") return book.author.toLowerCase().includes(lowerCaseQuery);
       if (type === "year") return book.year.toString().includes(lowerCaseQuery);
-      return false;
+      return false; // If none of the conditions match, exclude the book.
     });
   };
+
 
   useEffect(() => {
     const filtered = filterBooks(books, searchQuery, searchType);
     setFilteredBooks(filtered);
   }, [searchQuery, searchType, books]);
 
+
+  
   const addToOrder = (book) => {
     setOrderedBooks((prev) => {
       if (prev.find((b) => b.id === book.id)) {
@@ -69,6 +85,9 @@ function BookList() {
       }
       const updatedBooks = [...prev, book];
       console.log("Added to order:", updatedBooks); // Debug
+
+      // Save to localStorage
+      localStorage.setItem("orderedBooks", JSON.stringify(updatedBooks));
 
       // Update the state in React Router
       navigate("/books", { state: { orderedBooks: updatedBooks } }); // Pass updated orderedBooks
@@ -153,6 +172,7 @@ function BookList() {
 }
 
 export default BookList;
+
 
 
 
