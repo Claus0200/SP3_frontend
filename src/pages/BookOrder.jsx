@@ -5,7 +5,7 @@ function BookOrder() {
   const [orderedBooks, setOrderedBooks] = useState([]);
   const navigate = useNavigate();
 
-  // Load ordered books from localStorage when the component mounts
+  // Loading ordered books from localStorage when the component mounts
   useEffect(() => {
     const storedBooks = JSON.parse(localStorage.getItem("orderedBooks")) || [];
     setOrderedBooks(storedBooks);
@@ -13,6 +13,7 @@ function BookOrder() {
 
   const confirmOrder = () => {
     alert("You can now read your books!");
+   
     // Clear only the current orders
     localStorage.setItem("orderedBooks", JSON.stringify([])); // Empty the order list
     setOrderedBooks([]); // Clear the state for the current session
