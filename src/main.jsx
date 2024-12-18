@@ -11,6 +11,7 @@ import Login from './pages/Login.jsx'
 import Admin from './pages/Admin.jsx'
 import Account from './pages/Account.jsx'
 import Signup from './pages/Signup.jsx'
+import AdminEdit from './pages/AdminEdit.jsx'
 
 const router = createBrowserRouter(
   
@@ -24,6 +25,7 @@ const router = createBrowserRouter(
        <Route path=":searchType" element={<BookList />} />
       </Route>
       <Route path="admin" element={<Admin />} />
+      <Route path="admin/edit/:id" element={<AdminEdit />} />
       <Route path="account" element={<Account />} />
       <Route path="book-order" element={<BookOrder />} />
       <Route path="login" element={<Login />} />
