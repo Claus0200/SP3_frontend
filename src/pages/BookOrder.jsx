@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import userFacade from "../scripts/userFacade";
 
 function BookOrder() {
   const [orderedBooks, setOrderedBooks] = useState([]);
@@ -13,6 +14,11 @@ function BookOrder() {
 
   const confirmOrder = () => {
     alert("You can now read your books!");
+
+    // Map through the ordered books to extract IDs
+    const bookIds = orderedBooks.map((book) => book.id);
+
+    bookIds.forEach((id) => userFacade.addLentbook(id));
    
     // Clear only the current orders
     localStorage.setItem("orderedBooks", JSON.stringify([])); // Empty the order list
