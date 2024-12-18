@@ -5,6 +5,7 @@ import Home from './pages/Home.jsx'
 import MainLayout from './layouts/MainLayout.jsx'
 import Vision from './pages/Vision.jsx'
 import Endpoints from './pages/Endpoints.jsx'
+import User from './pages/User.jsx'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -12,6 +13,7 @@ const router = createBrowserRouter(
       <Route index element={<Home />}/>
       <Route path="vision" element={<Vision />} />
       <Route path="endpoints" element={<Endpoints />} />
+      <Route path="user/*" element={<User />} />
     </Route>
   )
 )
