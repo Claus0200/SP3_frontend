@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import adminFacade from "../scripts/adminFacade";
+import { useNavigate } from "react-router-dom";
 
 const Table = styled.table`
   border-radius: 5px;
@@ -8,6 +9,7 @@ const Table = styled.table`
 
 function Admin() {
   const [lentBooks, setLentBooks] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     adminFacade.fetchLentbooks(setLentBooks)
@@ -18,11 +20,13 @@ function Admin() {
   }, [lentBooks]);
 
   const editLentbook = (id) => {
-    console.log(id)
+    const lentBook = lentBooks.find((lentBook) => lentBook.id === id)
+    navigate("/admin/edit/" + lentBook.id, { state: { lentBook} })
   }
 
   const deleteLentbook = (id) => {
-    console.log(id)
+    adminFacade.deleteLentbook(id)
+    adminFacade.fetchLentbooks(setLentBooks)
   }
 
   const formatLentDate = (lentDate) => {

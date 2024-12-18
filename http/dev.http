@@ -10,8 +10,8 @@ GET {{baseUrl}}/books
 POST {{baseUrl}}/auth/register/
 
 {
-    "username": "test3127",
-    "password": "user123"
+    "username": "test5115",
+    "password": "test5115"
 }
 
 
@@ -19,8 +19,16 @@ POST {{baseUrl}}/auth/register/
 POST {{baseUrl}}/auth/login/
 
 {
-    "username": "test3127",
-    "password": "user123"
+    "username": "user1",
+    "password": "test1234"
+}
+
+###
+POST {{baseUrl}}/auth/login/
+
+{
+    "username": "admin",
+    "password": "admin1234"
 }
 
 
