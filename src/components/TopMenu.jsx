@@ -77,6 +77,7 @@ function TopMenu({ toggleTheme, loggedIn, username, handleLogout }) {
           <NavLink className="nav-link" to="/" end>Home</NavLink>
           <NavLink className="nav-link" to="/vision">Vision</NavLink>
           <NavLink className="nav-link" to="/endpoints">Endpoints</NavLink>
+          <NavLink className="nav-link" to="/user">User</NavLink>
           <NavLink className="nav-link" to="/admin">Admin</NavLink>
           <NavLink className="nav-link" to="/books">Book List</NavLink>
           <span className={`nav-basket ${isBasketActive ? "active" : ""}`} onClick={() => navigate("/book-order", { state: { orderedBooks } })}>Book Basket</span>
