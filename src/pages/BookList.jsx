@@ -60,7 +60,8 @@ useEffect(() => {
   const filterBooks = (books, query, type) => {
     if (!query.trim()) return books;  // If the query is empty or just whitespace, return the full list of books.
 
-    const lowerCaseQuery = query.toLowerCase();  // Convert the query to lowercase for case-insensitive searching.
+  // Convert the query to lowercase for case-insensitive searching.  
+    const lowerCaseQuery = query.toLowerCase();  
     return books.filter((book) => {
       if (type === "title") return book.title.toLowerCase().includes(lowerCaseQuery); // Match query with the book's title.
       if (type === "author") return book.author.toLowerCase().includes(lowerCaseQuery);
@@ -80,9 +81,9 @@ useEffect(() => {
   const addToOrder = (book) => {
     setOrderedBooks((prev) => {
       if (prev.find((b) => b.id === book.id)) {
-        console.log("Duplicate book skipped:", book); // Debug
         return prev;
       }
+      
       const updatedBooks = [...prev, book];
       console.log("Added to order:", updatedBooks); // Debug
 

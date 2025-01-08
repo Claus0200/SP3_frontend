@@ -32,7 +32,7 @@ function MainLayout() {
     setUsername(null);
   };
 
-  // Check login status on load and on changes to localStorage
+  // Check login status on load and on changes to localStorage by token
   useEffect(() => {
     const checkLoginStatus = () => {
       const token = apiFacade.getToken();
@@ -55,6 +55,8 @@ function MainLayout() {
       window.removeEventListener("storage", handleStorageChange);
     };
   }, []);
+  
+  
   const toggleTheme = () => {
     setTheme((current) => (current === "light" ? "dark" : "light"));
   };
