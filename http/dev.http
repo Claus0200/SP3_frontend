@@ -1,7 +1,6 @@
 @baseUrl = https://library.clausjoergensen.dk/api
 
-@jwtToken = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHcnVwcGUgMiIsInN1YiI6InRlc3QzMTI3IiwiZXhwIjoxNzM0MDk2Njc4LCJyb2xlcyI6InVzZXIiLCJ1c2VybmFtZSI6InRlc3QzMTI3In0.1F1ZqjBnP6JQxemB09OdhY5G21Mz2hCe7nd1DosXp28
-
+@jwtToken = eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJHcnVwcGUgMiIsInN1YiI6InVzZXIxMjMiLCJleHAiOjE3MzYwMDMxODMsInJvbGVzIjoidXNlciIsInVzZXJuYW1lIjoidXNlcjEyMyJ9.BVjx4FY4ac0pFZuipJl2cmhs0tgNYTUL0gpFEiYekRw
 ###
 GET {{baseUrl}}/books
 
@@ -19,8 +18,8 @@ POST {{baseUrl}}/auth/register/
 POST {{baseUrl}}/auth/login/
 
 {
-    "username": "user1",
-    "password": "test1234"
+    "username": "user123",
+    "password": "1234"
 }
 
 ###
@@ -34,6 +33,11 @@ POST {{baseUrl}}/auth/login/
 
 ###
 GET {{baseUrl}}/lendbooks
+Accept: application/json
+Authorization: Bearer {{jwtToken}}
+
+###
+GET {{baseUrl}}/lendbooks/user
 Accept: application/json
 Authorization: Bearer {{jwtToken}}
 

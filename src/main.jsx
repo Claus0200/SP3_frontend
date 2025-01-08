@@ -5,6 +5,7 @@ import Home from './pages/Home.jsx'
 import MainLayout from './layouts/MainLayout.jsx'
 import Vision from './pages/Vision.jsx'
 import Endpoints from './pages/Endpoints.jsx'
+import User from './pages/User.jsx'
 import BookList from './pages/BookList.jsx';
 import BookOrder from './pages/BookOrder.jsx';
 import Login from './pages/Login.jsx'
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
       <Route path="book-order" element={<BookOrder />} />
       <Route path="login" element={<Login />} />
       <Route path="signup" element={<Signup/>} />
+      <Route path="user/*" element={<User />} />
     </Route>
   )
 )
