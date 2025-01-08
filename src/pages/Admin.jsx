@@ -26,7 +26,6 @@ function Admin() {
 
   const deleteLentbook = (id) => {
     adminFacade.deleteLentbook(id)
-    adminFacade.fetchLentbooks(setLentBooks)
   }
 
   const formatLentDate = (lentDate) => {

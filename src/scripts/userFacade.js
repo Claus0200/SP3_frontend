@@ -10,7 +10,6 @@ function userFunctions() {
             .then((data) => console.log(data))
             .catch((error) => console.log("An error occurred: ", error))
     }
-    
 
     return {
         addLentbook,
