@@ -13,30 +13,31 @@ function Signup() {
   const navigate = useNavigate();
   const [error, setError] = useState(""); // State for error messages
 
-      const performSignup = (evt) => {
-        evt.preventDefault();
-            // Check if passwords match
+  const performSignup = (evt) => {
+    evt.preventDefault();
+    // Check if passwords match
     if (loginCredentials.password !== loginCredentials.repassword) {
         setError("Passwords do not match.");
         return; // Prevent form submission
       }
-        apiFacade
-          .signUp(loginCredentials.username, loginCredentials.password)
-          .then(() => {
-            navigate("/login"); // Redirect to home after login
-          })
-          .catch((error) => {
-            console.error("Signup failed", error);
-            setError("Signup failed. Please try again.")
-          });
-      };
+      
+    apiFacade
+      .signUp(loginCredentials.username, loginCredentials.password)
+      .then(() => {
+        navigate("/login"); // Redirect to home after login
+      })
+      .catch((error) => {
+        console.error("Signup failed", error);
+        setError("Signup failed. Please try again.")
+      });
+  };
 
-      const onChange = (evt) => {
-        setLoginCredentials({
-          ...loginCredentials,
-          [evt.target.id]: evt.target.value,
-        });
-      };
+  const onChange = (evt) => {
+    setLoginCredentials({
+      ...loginCredentials,
+      [evt.target.id]: evt.target.value,
+    });
+  };
 
   return (
     <form onSubmit={performSignup}>

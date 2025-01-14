@@ -51,6 +51,7 @@ useEffect(() => {
       }
     };
 
+    console.log("fetched books") // Debug
     fetchAllBooks();
   }, []);
 
@@ -73,6 +74,7 @@ useEffect(() => {
   useEffect(() => {
     const filtered = filterBooks(books, searchQuery, searchType);
     setFilteredBooks(filtered);
+    //console.log("Filtered books:", filtered); // Debug
   }, [searchQuery, searchType, books]);
 
 

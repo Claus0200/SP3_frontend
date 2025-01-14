@@ -74,7 +74,8 @@ function apiFacade() {
       setToken(data.token);
       console.log("Token set in localStorage:", data.token); // Log the token to ensure it's stored
     } catch (error) {
-      console.error("Login failed", error);
+        console.error("Login failed", error);
+        throw Error("Login failed");
     }
   };
 
